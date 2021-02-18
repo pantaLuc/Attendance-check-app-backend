@@ -28,7 +28,7 @@ To install <project_name>, follow these steps:
 
 Linux and macOS:
 
-```
+```docker-compose build
 <install_command>
 ```
 
@@ -66,15 +66,19 @@ Alternatively see the GitHub documentation on [creating a pull request](https://
 
 Thanks to the following people who have contributed to this project:
 
-- [@panta_perin](https://github.com/scottydocs) 📖
-- [@cainwatson](https://github.com/cainwatson) 🐛
-- [@calchuchesta](https://github.com/calchuchesta) 🐛
+- [@AbdelMfossa](https://github.com/AbdelMfossa) 📖
+- [@PantaLuc](https://github.com/PantaLuc) 📖
+- [@Romeokoati](https://github.com/RomeoKoati) 📖
+- [@DelRoos](https://github.com/DelRoos) 📖
+- [@joan30122001](https://github.com/joan30122001) 📖
+- [@Guiffou-Joel](https://github.com/Guiffou-Joel) 📖
+- [@RoosveltK](https://github.com/RoosveltK) 📖
 
 You might want to consider using something like the [All Contributors](https://github.com/all-contributors/all-contributors) specification and its [emoji key](https://allcontributors.org/docs/en/emoji-key).
 
 ## Contact
 
-If you want to contact me you can reach me at <your_email@address.com>.
+If you want to contact us, you can reach us at <dsc.uy1@gmail.com> || 699 01 67 27.
 
 ## License
 
