@@ -17,9 +17,17 @@ def signup(request):
     return Response(serializer.data)
 
 
+# Methode signin
 @api_view(['post'])
 def signin(request):
-    pass
+    email = request.data.get('email')
+    password = request.data.get('password')
+    user = User.objects.filter(email=email).first()
+    if user is None:
+        raise exceptions.AuthenticationFailed("user is not found ")
+    if not user.check_password(password):
+        raise exceptions.AuthenticationFailed("incorret password")
+    return Response("sucess")
 
 
 @api_view(['GET'])
