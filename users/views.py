@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .serializers import UsersSerializer
 from .models import User
+from .authentication import access_tokens
 
 
 @api_view(['post'])
@@ -27,7 +28,14 @@ def signin(request):
         raise exceptions.AuthenticationFailed("user is not found ")
     if not user.check_password(password):
         raise exceptions.AuthenticationFailed("incorret password")
-    return Response("sucess")
+
+    response = Response()
+    token = access_tokens(user)
+    response.set_cookie(key='jwt', value=token, httponly=True)
+    response.data = {
+        'jwt': token
+    }
+    return response
 
 
 @api_view(['GET'])
