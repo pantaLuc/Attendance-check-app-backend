@@ -41,7 +41,7 @@ def signin(request):
     }
     return response
 
-# je gere les auth
+# j ' obtiens l 'authenticated user
 
 
 class AuthenticateUSer(APIView):
@@ -53,6 +53,16 @@ class AuthenticateUSer(APIView):
         return Response({
             'data': serializer.data
         })
+
+
+@api_view
+def signout(request):
+    response = Response()
+    response.delete_cookie(key='jwt')
+    response.data = {
+        "detail": "sucess"
+    }
+    return response
 
 
 @api_view(['GET'])
