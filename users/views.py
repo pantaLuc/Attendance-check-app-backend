@@ -55,8 +55,8 @@ class AuthenticateUSer(APIView):
         })
 
 
-@api_view
-def signout(request):
+@api_view(['post'])
+def signout(reques):
     response = Response()
     response.delete_cookie(key='jwt')
     response.data = {
