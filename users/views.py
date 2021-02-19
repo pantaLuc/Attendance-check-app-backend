@@ -2,6 +2,8 @@ from django.shortcuts import render
 from rest_framework import exceptions
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from .views import UsersSerializer
+
 
 
 @api_view(['post'])
