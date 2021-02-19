@@ -15,3 +15,14 @@ def signup(request):
     serializer.is_valid(raise_exception=True)
     serializer.save()
     return Response(serializer.data)
+
+
+@api_view(['post'])
+def signin(request):
+    pass
+
+
+@api_view(['GET'])
+def users(reques):
+    serializer = UsersSerializer(User.objects.all(), many=True)
+    return Response(serializer.data)
