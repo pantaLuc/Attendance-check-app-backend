@@ -4,8 +4,8 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
-from .serializers import UsersSerializer
-from .models import User
+from .serializers import UsersSerializer, PermissionSerializer
+from .models import User, Permission
 from .authentication import access_tokens, JwtAuthenticatedUser
 
 
@@ -69,3 +69,16 @@ def signout(reques):
 def users(reques):
     serializer = UsersSerializer(User.objects.all(), many=True)
     return Response(serializer.data)
+
+# Obtenir les permissions
+
+
+class PermissionAPIView(APIView):
+    authentication_classes = [JwtAuthenticatedUser]
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        serializer = PermissionSerializer(Permission.objects.all(), many=True)
+        return Response({
+            "data": serializer.data
+        })

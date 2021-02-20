@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import signup, users, signin, AuthenticateUSer, signout
+from .views import (signup, users, signin,
+                    AuthenticateUSer, signout, PermissionAPIView)
 
 
 urlpatterns = [
@@ -7,5 +8,6 @@ urlpatterns = [
     path('signin', signin),
     path('users', users),
     path('currentuser', AuthenticateUSer.as_view()),
-    path('signout', signout)
+    path('signout', signout),
+    path("permissions", PermissionAPIView.as_view())
 ]
