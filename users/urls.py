@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import (signup, users, signin, AuthenticateUSer,
-                    signout, PermissionAPIView, RoleViewSet)
+                    signout, PermissionViewSet, RoleViewSet)
 
 
 urlpatterns = [
@@ -9,7 +9,10 @@ urlpatterns = [
     path('users', users),
     path('currentuser', AuthenticateUSer.as_view()),
     path('signout', signout),
-    path("permissions", PermissionAPIView.as_view()),
+    path("permissions", PermissionViewSet.as_view({
+        'get': 'list',
+        'post': 'create'
+    })),
     path('roles', RoleViewSet.as_view({
         'get': 'list',
         'post': 'create',

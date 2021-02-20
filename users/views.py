@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import exceptions, viewsets
+from rest_framework import exceptions, viewsets, status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view
@@ -73,18 +73,26 @@ def users(reques):
 # Obtenir les permissions
 
 
-class PermissionAPIView(APIView):
+class PermissionViewSet(viewsets.ViewSet):
     authentication_classes = [JwtAuthenticatedUser]
     permission_classes = [IsAuthenticated]
 
-    def get(self, request):
+    def list(self, request):
         serializer = PermissionSerializer(Permission.objects.all(), many=True)
         return Response({
             "data": serializer.data
         })
 
+    def create(self, request):
+        serializer = PermissionSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({
+            "data": serializer.data
+        })
 
 # Definir un viewSet Pour gerer les Roles
+
 
 class RoleViewSet(viewsets.ViewSet):
     authentication_classes = [JwtAuthenticatedUser]
@@ -97,18 +105,30 @@ class RoleViewSet(viewsets.ViewSet):
         })
 
     def retrieve(self, request, pk=None):
-        pass
+        role = Role.objects.get(id=pk)
+        serializer = RoleSerializer(role)
+        return Response({
+            "data": serializer.data
+        })
 
     def create(self, request):
         serializer = RoleSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response({
-            "detail": serializer.data
+            "data": serializer.data
         })
 
     def update(self, request, pk=None):
-        pass
+        role = Role.objects.get(id=pk)
+        serializer = RoleSerializer(instance=role, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({
+            "deta": serializer.data
+        }, status=status.HTTP_202_ACCEPTED)
 
     def delete(self, request, pk=None):
-        pass
+        role = Role.objects.get(id=pk)
+        role.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

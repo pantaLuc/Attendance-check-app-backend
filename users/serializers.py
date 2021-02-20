@@ -5,15 +5,33 @@ from .models import User, Role, Permission
 class PermissionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Permission
-        field = "__all__"
+        fields = "__all__"
+
+
+class PermissionRelatedField(serializers.StringRelatedField):
+    def to_representation(self, value):
+        return PermissionSerializer(value).data
+
+    def to_internal_value(self, data):
+        return data
 
 
 class RoleSerializer(serializers.ModelSerializer):
-    permission = PermissionSerializer(many=True)
+    permissions = PermissionRelatedField(many=True)
 
     class Meta:
         model = Role
         fields = "__all__"
+
+    def create(self, validated_data):
+        permissions = validated_data.pop('permissions', None)
+        # return a dictionnary
+        instance = self.Meta.model(**validated_data)
+        instance.save()
+        # normal array
+        instance.permissions.add(*permissions)
+        instance.save()
+        return instance
 
 
 class UsersSerializer(serializers.ModelSerializer):
