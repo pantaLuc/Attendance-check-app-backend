@@ -132,3 +132,17 @@ class RoleViewSet(viewsets.ViewSet):
         role = Role.objects.get(id=pk)
         role.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class ProfileUseAPIView(APIView):
+    authentication_classes = [JwtAuthenticatedUser]
+    permission_classes = [IsAuthenticated]
+
+    def put(self, request, pk=None):
+        user = request.user
+        serializer = UsersSerializer(user, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({
+            "data": serializer.data
+        })

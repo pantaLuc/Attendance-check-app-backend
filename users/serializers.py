@@ -34,7 +34,17 @@ class RoleSerializer(serializers.ModelSerializer):
         return instance
 
 
+class RoleRelatedField(serializers.RelatedField):
+    def to_representation(self, instance):
+        return RoleSerializer(instance).data
+
+    def to_internal_value(self, data):
+        return self.queryset.get(pk=data)
+
+
 class UsersSerializer(serializers.ModelSerializer):
+    role = RoleRelatedField(many=True, queryset=Role.objects.all())
+
     class Meta:
         model = User
         fields = [
@@ -42,7 +52,8 @@ class UsersSerializer(serializers.ModelSerializer):
             'last_name',
             'email',
             'phone',
-            'password'
+            'password',
+            'role'
         ]
         extra_kwargs = {
             "password": {"write_only": True}
