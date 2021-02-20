@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from rest_framework import exceptions
+from rest_framework import exceptions, viewsets
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
-from .serializers import UsersSerializer, PermissionSerializer
-from .models import User, Permission
+from .serializers import UsersSerializer, PermissionSerializer, RoleSerializer
+from .models import User, Permission, Role
 from .authentication import access_tokens, JwtAuthenticatedUser
 
 
@@ -82,3 +82,33 @@ class PermissionAPIView(APIView):
         return Response({
             "data": serializer.data
         })
+
+
+# Definir un viewSet Pour gerer les Roles
+
+class RoleViewSet(viewsets.ViewSet):
+    authentication_classes = [JwtAuthenticatedUser]
+    permission_classes = [IsAuthenticated]
+
+    def list(self, request):
+        serializer = RoleSerializer(Role.objects.all(), many=True)
+        return Response({
+            "data": serializer.data
+        })
+
+    def retrieve(self, request, pk=None):
+        pass
+
+    def create(self, request):
+        serializer = RoleSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({
+            "detail": serializer.data
+        })
+
+    def update(self, request, pk=None):
+        pass
+
+    def delete(self, request, pk=None):
+        pass
