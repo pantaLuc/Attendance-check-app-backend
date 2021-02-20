@@ -16,6 +16,14 @@ class PermissionRelatedField(serializers.StringRelatedField):
         return data
 
 
+class RoleRelatedField(serializers.RelatedField):
+    def to_representation(self, instance):
+        return RoleSerializer(instance).data
+
+    def to_internal_value(self, data):
+        return self.queryset.get(pk=data)
+
+
 class RoleSerializer(serializers.ModelSerializer):
     permissions = PermissionRelatedField(many=True)
 
@@ -34,16 +42,8 @@ class RoleSerializer(serializers.ModelSerializer):
         return instance
 
 
-class RoleRelatedField(serializers.RelatedField):
-    def to_representation(self, instance):
-        return RoleSerializer(instance).data
-
-    def to_internal_value(self, data):
-        return self.queryset.get(pk=data)
-
-
 class UsersSerializer(serializers.ModelSerializer):
-    role = RoleRelatedField(many=True, queryset=Role.objects.all())
+    role = RoleRelatedField(queryset=Role.objects.all(), many=False)
 
     class Meta:
         model = User
@@ -61,6 +61,16 @@ class UsersSerializer(serializers.ModelSerializer):
     # Methode pour
 
     def create(self, validated_data):
+        password = validated_data.pop('password', None)
+        # retourner un dictionnaire
+        instance = self.Meta.model(**validated_data)
+
+        if password is not None:
+            instance.set_password(password)
+        instance.save()
+        return instance
+
+    def update(self, validated_data):
         password = validated_data.pop('password', None)
         # retourner un dictionnaire
         instance = self.Meta.model(**validated_data)

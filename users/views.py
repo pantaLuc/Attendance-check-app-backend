@@ -140,6 +140,8 @@ class ProfileUseAPIView(APIView):
 
     def put(self, request, pk=None):
         user = request.user
+        if request.data['password'] != request.data['password_confirm']:
+            raise exceptions.ValidationError("password do not match")
         serializer = UsersSerializer(user, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
         serializer.save()
