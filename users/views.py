@@ -7,6 +7,7 @@ from rest_framework.views import APIView
 from .serializers import UsersSerializer, PermissionSerializer, RoleSerializer
 from .models import User, Permission, Role
 from .authentication import access_tokens, JwtAuthenticatedUser
+from .permissions import ViewPermission
 
 
 @api_view(['post'])
