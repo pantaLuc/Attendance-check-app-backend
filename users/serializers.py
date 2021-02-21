@@ -70,7 +70,7 @@ class UsersSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
-    def update(self, validated_data):
+    def update(self, instance, validated_data):
         password = validated_data.pop('password', None)
         # retourner un dictionnaire
         instance = self.Meta.model(**validated_data)

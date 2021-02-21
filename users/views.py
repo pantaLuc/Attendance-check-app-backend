@@ -49,9 +49,10 @@ class AuthenticateUSer(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        serializer = UsersSerializer(request.user)
+        data = UsersSerializer(request.user).data
+        data['permissions'] = [p['name'] for p in data['role']['permissions']]
         return Response({
-            'data': serializer.data
+            'data': data
         })
 
 
@@ -135,6 +136,20 @@ class RoleViewSet(viewsets.ViewSet):
 
 
 class ProfileUseAPIView(APIView):
+    authentication_classes = [JwtAuthenticatedUser]
+    permission_classes = [IsAuthenticated]
+
+    def put(self, request, pk=None):
+        user = request.user
+        serializer = UsersSerializer(user, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({
+            "data": serializer.data
+        })
+
+
+class ProfilePasswordAPIView(APIView):
     authentication_classes = [JwtAuthenticatedUser]
     permission_classes = [IsAuthenticated]
 

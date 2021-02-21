@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import (signup, users, signin, AuthenticateUSer,
-                    signout, PermissionViewSet, RoleViewSet, ProfileUseAPIView)
+                    signout, PermissionViewSet, RoleViewSet,
+                    ProfileUseAPIView, ProfilePasswordAPIView)
 
 
 urlpatterns = [
@@ -22,6 +23,7 @@ urlpatterns = [
         'put': 'update',
         'delete': 'delete'
     })),
-    path('update', ProfileUseAPIView.as_view()),
+    path('users/info', ProfileUseAPIView.as_view()),
+    path('users/password', ProfilePasswordAPIView.as_view())
 
 ]
