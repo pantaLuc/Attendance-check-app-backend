@@ -1,0 +1,30 @@
+[
+    {
+        "model":"users.permission",
+        "pk":1,
+        "fields":{
+            "name":"create_controler"
+        }
+    },
+    {
+        "model":"users.permission",
+        "pk":2,
+        "fields":{
+            "name":"delete_user"
+        }
+    },
+    {
+        "model":"users.permission",
+        "pk":3,
+        "fields":{
+            "name":"update_user"
+        }
+    },
+    {
+        "model":"users.permission",
+        "pk":4,
+        "fields":{
+            "name":"marks_supervisors"
+        }
+    }
+]
