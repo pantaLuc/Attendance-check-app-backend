@@ -17,4 +17,10 @@ class Surveillant(models.Model):
                             )
 
 
-class 
+class Salle(models.Model):
+    code = models.CharField(max_length=10)
+    libelle = models.CharField(max_length=255)
+    localisation = models.CharField(max_length=255)
+
+
+
