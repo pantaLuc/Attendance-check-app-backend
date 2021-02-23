@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
+    'surveillance.apps.SurveillanceConfig',
     'rest_framework',
 ]
 
