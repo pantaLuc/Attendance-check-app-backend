@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from users.models import User
 
 
 # Create your models here.
@@ -50,15 +51,27 @@ class Ue(models.Model):
     level = models.ForeignKey(Niveau, on_delete=models.CASCADE)
 
 
-class Exam(models.Model):
-    day = models.DateField(auto_now=False, auto_now_add=False)
+class Plage(models.Model):
     begin = models.TimeField(auto_now=False, auto_now_add=False)
     end = models.TimeField(auto_now=False, auto_now_add=False)
+
+
+class Semestre(models.Model):
+    num_semestre = models.IntegerField()
+    year = models.IntegerField()
+
+class Exam(models.Model):
+    day = models.DateField(auto_now=False, auto_now_add=False)
+    plage = models.ForeignKey(Plage, on_delete=models.CASCADE)
     ue = models.ForeignKey(Ue, on_delete=models.CASCADE)
-    salle = models.ForeignKey(Salle, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    semestre = models.ForeignKey(Semestre, on_delete=models.CASCADE)
 
 
-class Present(models.Model):
-    examen = models.ForeignKey(Exam, on_delete=models.CASCADE, related_name="present")
-    #surveillant = models.ForeignKey(Surveillant, on_delete=models.CASCADE)
+
+class Controler(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    surveillant = models.ForeignKey(Surveillant, on_delete=models.CASCADE)
+    examen = models.ForeignKey(Exam, on_delete=models.CASCADE)
     is_present = models.BooleanField(default = False)
+    salle = models.ForeignKey(Salle, on_delete=models.CASCADE)

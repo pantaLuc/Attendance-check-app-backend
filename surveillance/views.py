@@ -1,54 +1,84 @@
+from django.db.models import Q
+import datetime
 from django.shortcuts import render
-from .models import Surveillant, Salle, Filiere, Niveau, Ue, Exam, Present
+from .models import Surveillant, Salle, Filiere, Niveau, Ue, Plage, Semestre, Exam, Controler
 from rest_framework.response import Response
-from .serializers import SurveillantSerializer, SalleSerializer, FiliereSerializer, NiveauSerializer, UeSerializer, ExamSerializer, PresentSerializer
+from .serializers import SurveillantSerializer, SalleSerializer, FiliereSerializer, NiveauSerializer, UeSerializer, PlageSerializer, SemestreSerializer, ExamSerializer, ControlerSerializer
 from rest_framework.generics import GenericAPIView
 from rest_framework import exceptions, status, generics, mixins, viewsets
 from rest_framework.permissions import IsAuthenticated
 from users.authentication import JwtAuthenticatedUser
-# from rest_framework_simplejwt.authentication import JWTauthentication
-#from .serializers import SurveillantSerializer
+from rest_framework.decorators import api_view
+from django.core.exceptions import ObjectDoesNotExist
 
-# class SurveillantCreateView(CreateAPIView):
-#     queryset = Surveillant.objects.all()
-#     serializer_class = SurveillantCreateSerializer
 
-#     # def perform_create(self, serializer):
-#     #     serializer.save(user=self.request.user)
 
-# class SurveillantUpdateView(RetrieveUpdateAPIView):
-#     queryset = Surveillant.objects.all()
-#     serializer_class = SurveillantCreateUpdateSerializer
-#     lookup_field = 'phone'
-#     lookup_url_kwarg = 'phone'
+@api_view(['GET'])
+def mark_supervisor(request, id_present):
+    try:
+        supervisor = Controler.objects.get(pk=id_present)
+        supervisor.is_present = True
+        supervisor.save()
+        
+        return Response({
+                        'id_exam': supervisor.id,
+                        'surv' : {
+                                    "id" : supervisor.surveillant.pk,
+                                    "name" : supervisor.surveillant.first_name +" "+supervisor.surveillant.last_name,
+                                    "presence" : supervisor.is_present
+                                }
+                    })
+    except Surveillant.DoesNotExist:
+        return Response({"message":"Impossible de marquer la presence"})
 
-# class SurveillantGenericAPIVIEW(generics.GenericAPIView,
-#                          mixins.ListModelMixin, mixins.RetrieveModelMixin,
-#                          mixins.CreateModelMixin, mixins.UpdateModelMixin,
-#                          mixins.DestroyModelMixin):
-#     queryset = Surveillant.objects.all()
-#     serializer_class = SurveillantSerializer
+@api_view(['GET'])
+def check_supervisor(request, id_surv):
+    try:
+        supervisor = Surveillant.objects.get(pk=id_surv)
+        
+        if supervisor is not None:
+            current_time = datetime.datetime.now().time()
 
-#     def get(self, request, pk=None):
-#         if pk:
-#             return Response({'data': self.retrieve(request, pk).data})
-#         return Response({
-#             'data': self.list(request).data
-#         })
-
-#     def post(self, request):
-#         return Response({
-#             "data": self.create(request).data
-#         })
-
-#     def put(self, request, pk=None):
-#         return Response({
-#             "data": self.update(request, pk).data
-#         })
-
-#     def delete(self, request, pk=None):
-#         return self.destroy(request, pk)
-
+            try:
+                    
+                present = Controler.objects.get(
+                                    Q(examen__plage__begin__lt=current_time) &
+                                    Q(examen__plage__end__gt=current_time) &
+                                    Q(surveillant=supervisor))
+        
+                if present is not None:
+                    return Response({
+                        'id_exam': present.id,
+                        'surv' : {
+                                    "id" : supervisor.pk,
+                                    "name" : supervisor.first_name +" "+supervisor.last_name
+                                },
+                        'niveau' : {
+                                    'id' : present.examen.ue.level.id,
+                                    'niveau' : present.examen.ue.level.level,
+                                    'filiere': present.examen.ue.level.filiere.name,
+                                },
+                        'salle' : {
+                                    'id' : present.salle.id,
+                                    'code': present.salle.code,
+                                    'localisation': present.salle.localisation
+                                },
+                        'Ue' : {
+                                "id": present.examen.ue.id,
+                                "code": present.examen.ue.code,
+                                "intitule": present.examen.ue.intitule
+                            },
+                        'Horaire' : {
+                            'id' : present.examen.plage.id,
+                            'begin' : present.examen.plage.begin,
+                            'end' : present.examen.plage.end
+                        },
+                    })
+            except Controler.DoesNotExist:
+                return Response({"message":"surveillant ne doit pas surveiller"})
+    except Surveillant.DoesNotExist:
+        return Response({"message":"Utilisateur invalide"})
+  
 
 class SurveillantViewSet(viewsets.ViewSet):
     # authentication_classes = [JwtAuthenticatedUser]
@@ -93,8 +123,8 @@ class SurveillantViewSet(viewsets.ViewSet):
 
 
 class SalleViewSet(viewsets.ViewSet):
-    authentication_classes = [JwtAuthenticatedUser]
-    permission_classes = [IsAuthenticated]
+    # authentication_classes = [JwtAuthenticatedUser]
+    # permission_classes = [IsAuthenticated]
 
     def list(self, request):
         serializer = SalleSerializer(Salle.objects.all(), many=True)
@@ -135,8 +165,8 @@ class SalleViewSet(viewsets.ViewSet):
 
 
 class FiliereViewSet(viewsets.ViewSet):
-    authentication_classes = [JwtAuthenticatedUser]
-    permission_classes = [IsAuthenticated]
+    # authentication_classes = [JwtAuthenticatedUser]
+    # permission_classes = [IsAuthenticated]
 
     def list(self, request):
         serializer = FiliereSerializer(Filiere.objects.all(), many=True)
@@ -177,8 +207,8 @@ class FiliereViewSet(viewsets.ViewSet):
 
 
 class NiveauViewSet(viewsets.ViewSet):
-    authentication_classes = [JwtAuthenticatedUser]
-    permission_classes = [IsAuthenticated]
+    # authentication_classes = [JwtAuthenticatedUser]
+    # permission_classes = [IsAuthenticated]
 
     def list(self, request):
         serializer = NiveauSerializer(Niveau.objects.all(), many=True)
@@ -219,8 +249,8 @@ class NiveauViewSet(viewsets.ViewSet):
 
 
 class UeViewSet(viewsets.ViewSet):
-    authentication_classes = [JwtAuthenticatedUser]
-    permission_classes = [IsAuthenticated]
+    # authentication_classes = [JwtAuthenticatedUser]
+    # permission_classes = [IsAuthenticated]
 
     def list(self, request):
         serializer = UeSerializer(Ue.objects.all(), many=True)
@@ -259,6 +289,88 @@ class UeViewSet(viewsets.ViewSet):
 
 
 
+class PlageViewSet(viewsets.ViewSet):
+    # authentication_classes = [JwtAuthenticatedUser]
+    # permission_classes = [IsAuthenticated]
+
+    def list(self, request):
+        serializer = PlageSerializer(Plage.objects.all(), many=True)
+        return Response({
+            'data': serializer.data
+        })
+
+    def retrieve(self, request, pk=None):
+        plage = Plage.objects.get(id=pk)
+        serializer = PlageSerializer(plage)
+        return Response({
+            'data': serializer.data
+        })
+
+    def create(self, request):
+        serializer = PlageSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({
+            'data': serializer.data
+        }, status=status.HTTP_201_CREATED)
+
+    def update(self, request, pk=None):
+        plage = Plage.objects.get(id=pk)
+        serializer = PlageSerializer(instance=ue, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({
+            'data': serializer.data}, status=status.HTTP_202_ACCEPTED)
+
+    def destroy(self, request, pk=None):
+        plage = Plage.objects.get(id=pk)
+        plage.delete()
+
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+
+class SemestreViewSet(viewsets.ViewSet):
+    # authentication_classes = [JwtAuthenticatedUser]
+    # permission_classes = [IsAuthenticated]
+
+    def list(self, request):
+        serializer = SemestreSerializer(Semestre.objects.all(), many=True)
+        return Response({
+            'data': serializer.data
+        })
+
+    def retrieve(self, request, pk=None):
+        semestre = Semestre.objects.get(id=pk)
+        serializer = SemestreSerializer(semestre)
+        return Response({
+            'data': serializer.data
+        })
+
+    def create(self, request):
+        serializer = SemestreSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({
+            'data': serializer.data
+        }, status=status.HTTP_201_CREATED)
+
+    def update(self, request, pk=None):
+        semestre = Semestre.objects.get(id=pk)
+        serializer = SemestreSerializer(instance=ue, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({
+            'data': serializer.data}, status=status.HTTP_202_ACCEPTED)
+
+    def destroy(self, request, pk=None):
+        semestre = Semestre.objects.get(id=pk)
+        semestre.delete()
+
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
 
 class ExamViewSet(viewsets.ViewSet):
     # authentication_classes = [JwtAuthenticatedUser]
@@ -278,7 +390,6 @@ class ExamViewSet(viewsets.ViewSet):
         })
 
     def create(self, request):
-        print(request.data)
         serializer = ExamSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
@@ -303,26 +414,25 @@ class ExamViewSet(viewsets.ViewSet):
 
 
 
-class PresentViewSet(viewsets.ViewSet):
+class ControlerViewSet(viewsets.ViewSet):
     # authentication_classes = [JwtAuthenticatedUser]
     # permission_classes = [IsAuthenticated]
 
     def list(self, request):
-        serializer = PresentSerializer(Present.objects.all(), many=True)
+        serializer = ControlerSerializer(Controler.objects.all(), many=True)
         return Response({
             'data': serializer.data
         })
 
     def retrieve(self, request, pk=None):
-        present = Present.objects.get(id=pk)
-        serializer = PresentSerializer(present)
+        controler = Controler.objects.get(id=pk)
+        serializer = ControlerSerializer(controler)
         return Response({
             'data': serializer.data
         })
 
     def create(self, request):
-        print(request.data)
-        serializer = PresentSerializer(data=request.data)
+        serializer = ControlerSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response({
@@ -330,24 +440,15 @@ class PresentViewSet(viewsets.ViewSet):
         }, status=status.HTTP_201_CREATED)
 
     def update(self, request, pk=None):
-        present = Present.objects.get(id=pk)
-        serializer = PresentSerializer(instance=present, data=request.data)
+        controler = Controler.objects.get(id=pk)
+        serializer = ControlerSerializer(instance=controler, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response({
             'data': serializer.data}, status=status.HTTP_202_ACCEPTED)
 
     def destroy(self, request, pk=None):
-        present = Present.objects.get(id=pk)
-        present.delete()
+        controler = Controler.objects.get(id=pk)
+        controler.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-    def present(self, pk=None):
-        user = surveillant.objects.get(id=pk)
-        if user is None:
-            user.is_present = True 
-            user.save()
-        else:
-            user.is_present = False

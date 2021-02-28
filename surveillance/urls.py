@@ -1,8 +1,10 @@
 from django.urls import path
 #from .views import Surveillant 
-from .views import SurveillantViewSet, SalleViewSet, FiliereViewSet, NiveauViewSet, UeViewSet, ExamViewSet, PresentViewSet
+from .views import SurveillantViewSet, SalleViewSet, mark_supervisor, FiliereViewSet, NiveauViewSet, UeViewSet, check_supervisor, PlageViewSet, SemestreViewSet, ExamViewSet, ControlerViewSet
 
 urlpatterns = [
+    path("checksupervisor/<int:id_surv>/", check_supervisor),
+    path("marksupervisor/<int:id_present>/", mark_supervisor),
     path("supervisor" , SurveillantViewSet.as_view({
         "get":"list",
         "post":"create"
@@ -48,6 +50,24 @@ urlpatterns = [
         'put': 'update',
         'delete': 'destroy'
     })),
+    path("horaire" , PlageViewSet.as_view({
+        "get":"list",
+        "post":"create"
+    })),
+    path('horaire/<str:pk>', PlageViewSet.as_view({
+        'get': "retrieve",
+        'put': 'update',
+        'delete': 'destroy'
+    })),
+    path("semestre" , SemestreViewSet.as_view({
+        "get":"list",
+        "post":"create"
+    })),
+    path('semestre/<str:pk>', SemestreViewSet.as_view({
+        'get': "retrieve",
+        'put': 'update',
+        'delete': 'destroy'
+    })),
     path("examen" , ExamViewSet.as_view({
         "get":"list",
         "post":"create"
@@ -57,11 +77,11 @@ urlpatterns = [
         'put': 'update',
         'delete': 'destroy'
     })),
-    path("presence" , PresentViewSet.as_view({
+    path("controle" , ControlerViewSet.as_view({
         "get":"list",
         "post":"create"
     })),
-    path('presence/<str:pk>', PresentViewSet.as_view({
+    path('controle/<str:pk>', ControlerViewSet.as_view({
         'get': "retrieve",
         'put': 'update',
         'delete': 'destroy'

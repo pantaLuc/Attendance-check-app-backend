@@ -1,5 +1,7 @@
 from rest_framework import serializers 
-from .models import Surveillant, Salle, Filiere, Niveau, Ue, Exam, Present
+from .models import Surveillant, Salle, Filiere, Niveau, Ue, Plage, Semestre, Exam, Controler
+from users.models import User
+from users.serializers import UsersSerializer
 from rest_framework.serializers import SerializerMethodField
 
 class SurveillantSerializer(serializers.ModelSerializer):
@@ -75,56 +77,64 @@ class SalleRelatedField(serializers.RelatedField):
         return self.queryset.get(pk=data)
 
 
-class ExamSerializer(serializers.ModelSerializer):
-    ue = UeRelatedField(queryset=Ue.objects.all(), many=False)
-    salle = SalleRelatedField(queryset=Salle.objects.all(), many=False)
-    surv = SerializerMethodField()
-
-    class Meta:
-        model = Exam
-        fields = [
-                    'day',
-                    'begin',
-                    'end',
-                    'ue',
-                    'salle',
-                    'surv'
-                 ]
-
-    def get_surv(self, obj):
-        all_presents = obj.present.all()
-        all_surv = []
-        for item in all_presents:
-            present = {
-                "id" : item.surveillant.pk,
-                "nom" : item.surveillant.first_name +" "+ item.surveillant.last_name
-            }
-            all_surv.append(present)
-        return all_surv
-
-    def create(self, validated_data):
-        exam = Exam(
-            day = validated_data['day'],
-            begin = validated_data['begin'],
-            end = validated_data['end'],
-            ue = validated_data['ue'],
-            salle = validated_data['salle']
-        )
-        exam.save()
-
-        for id in validated_data['surv']:
-            present = Present(
-                examen = exam,
-                surveillant = id,
-            )
-            present.save()
-
 class SurveillantRelatedField(serializers.RelatedField):
     def to_representation(self, instance):
         return SurveillantSerializer(instance).data
 
     def to_internal_value(self, data):
         return self.queryset.get(pk=data)
+
+
+
+class PlageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Plage
+        fields = [
+                    'begin',
+                    'end'
+                 ]
+
+
+class PlageRelatedField(serializers.RelatedField):
+    def to_representation(self, instance):
+        return PlageSerializer(instance).data
+
+    def to_internal_value(self, data):
+        return self.queryset.get(pk=data)
+
+
+class SemestreSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Semestre
+        fields = [
+                    'num_semestre',
+                    'year'
+                 ]
+
+
+class SemestreRelatedField(serializers.RelatedField):
+    def to_representation(self, instance):
+        return SemestreSerializer(instance).data
+
+    def to_internal_value(self, data):
+        return self.queryset.get(pk=data)
+
+
+
+class ExamSerializer(serializers.ModelSerializer):
+    ue = UeRelatedField(queryset=Ue.objects.all(), many=False)
+    plage = PlageRelatedField(queryset=Plage.objects.all(), many=False)
+    semestre = SemestreRelatedField(queryset=Semestre.objects.all(), many=False)
+
+    class Meta:
+        model = Exam
+        fields = [
+                    'day',
+                    'plage',
+                    'ue',
+                    'name',
+                    'semestre'
+                 ]
 
 
 class ExamRelatedField(serializers.RelatedField):
@@ -135,14 +145,27 @@ class ExamRelatedField(serializers.RelatedField):
         return self.queryset.get(pk=data)
 
 
-class PresentSerializer(serializers.ModelSerializer):
+class UserRelatedField(serializers.RelatedField):
+    def to_representation(self, instance):
+        return UsersSerializer(instance).data
+
+    def to_internal_value(self, data):
+        return self.queryset.get(pk=data)
+
+    
+class ControlerSerializer(serializers.ModelSerializer):
+    surveillant = SurveillantRelatedField(queryset=Surveillant.objects.all(), many=False)
     examen = ExamRelatedField(queryset=Exam.objects.all(), many=False)
-    #surveillant = SurveillantRelatedField(queryset=Surveillant.objects.all(), many=False)
+    user = UserRelatedField(queryset=User.objects.all(), many=False)
+    salle = SalleRelatedField(queryset=Salle.objects.all(), many=False)
+
     class Meta:
-        model = Present
+        model = Controler
         fields = [
+                    'user',
+                    'surveillant',
                     'examen',
-                    #'surveillant',
+                    'salle',
                     'is_present'
                  ]
-    
+
