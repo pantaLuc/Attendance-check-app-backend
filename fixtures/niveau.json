@@ -1,0 +1,37 @@
+[{
+        "model": "surveillance.niveau",
+        "pk": 1,
+        "fields": {
+            "level": "1",
+            "nbr_student": 250,
+            "filiere": 1
+        }
+    },
+    {
+        "model": "surveillance.niveau",
+        "pk": 2,
+        "fields": {
+            "level": "3",
+            "nbr_student": 100,
+            "filiere": 1
+        }
+    },
+    {
+        "model": "surveillance.niveau",
+        "pk": 3,
+        "fields": {
+            "level": "1",
+            "nbr_student": 700,
+            "filiere": 2
+        }
+    },
+    {
+        "model": "surveillance.niveau",
+        "pk": 4,
+        "fields": {
+            "level": "2",
+            "nbr_student": 300,
+            "filiere": 2
+        }
+    }
+]

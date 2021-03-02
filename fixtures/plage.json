@@ -1,0 +1,33 @@
+[{
+        "model": "surveillance.plage",
+        "pk": 1,
+        "fields": {
+            "begin": "13:30:00",
+            "end": "16:30:00"
+        }
+    },
+    {
+        "model": "surveillance.plage",
+        "pk": 2,
+        "fields": {
+            "begin": "12:00:00",
+            "end": "15:30:00"
+        }
+    },
+    {
+        "model": "surveillance.plage",
+        "pk": 3,
+        "fields": {
+            "begin": "09:45:00",
+            "end": "12:45:00"
+        }
+    },
+    {
+        "model": "surveillance.plage",
+        "pk": 4,
+        "fields": {
+            "begin": "17:00:00",
+            "end": "20:30:00"
+        }
+    }
+]

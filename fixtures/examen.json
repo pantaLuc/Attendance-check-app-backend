@@ -1,0 +1,45 @@
+[{
+        "model": "surveillance.exam",
+        "pk": 1,
+        "fields": {
+            "day": "2021-06-21",
+            "plage": 1,
+            "ue": 1,
+            "name": "SN",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 2,
+        "fields": {
+            "day": "2021-05-21",
+            "plage": 3,
+            "ue": 5,
+            "name": "CC",
+            "semestre": 2
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 3,
+        "fields": {
+            "day": "2021-02-23",
+            "plage": 4,
+            "ue": 3,
+            "name": "Rattapage",
+            "semestre": 2
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 4,
+        "fields": {
+            "day": "2021-08-25",
+            "plage": 3,
+            "ue": 2,
+            "name": "SN",
+            "semestre": 1
+        }
+    }
+]

@@ -1,0 +1,50 @@
+[{
+        "model": "surveillance.salle",
+        "pk": 1,
+        "fields": {
+            "code": "R101",
+            "libelle": "salle 1",
+            "localisation": "bloc pedagogique"
+        }
+    },
+    {
+        "model": "surveillance.salle",
+        "pk": 2,
+
+        "fields": {
+            "code": "R102",
+            "libelle": "salle 2",
+            "localisation": "bloc pedagogique"
+        }
+    },
+    {
+        "model": "surveillance.salle",
+        "pk": 3,
+
+        "fields": {
+            "code": "R103",
+            "libelle": "salle 3",
+            "localisation": "bloc pedagogique"
+        }
+    },
+    {
+        "model": "surveillance.salle",
+        "pk": 4,
+
+        "fields": {
+            "code": "R104",
+            "libelle": "salle 4",
+            "localisation": "bloc pedagogique"
+        }
+    },
+    {
+        "model": "surveillance.salle",
+        "pk": 5,
+
+        "fields": {
+            "code": "R105",
+            "libelle": "salle 5",
+            "localisation": "bloc pedagogique"
+        }
+    }
+]

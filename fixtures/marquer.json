@@ -1,0 +1,51 @@
+[{
+        "model": "surveillance.controler",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "surveillant": 1,
+            "examen": 1,
+            "salle": 1
+        }
+    },
+    {
+        "model": "surveillance.controler",
+        "pk": 2,
+        "fields": {
+            "user": 1,
+            "surveillant": 2,
+            "examen": 1,
+            "salle": 1
+        }
+    },
+    {
+        "model": "surveillance.controler",
+        "pk": 3,
+        "fields": {
+            "user": 3,
+            "surveillant": 3,
+            "examen": 1,
+            "salle": 1
+        }
+    },
+    {
+        "model": "surveillance.controler",
+        "pk": 4,
+        "fields": {
+            "user": 4,
+            "surveillant": 3,
+            "examen": 2,
+            "salle": 4
+        }
+    },
+    {
+        "model": "surveillance.controler",
+        "pk": 5,
+        "fields": {
+            "user": 3,
+            "surveillant": 2,
+            "examen": 3,
+            "salle": 2
+        }
+    }
+]

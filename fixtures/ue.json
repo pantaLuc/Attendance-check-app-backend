@@ -1,0 +1,61 @@
+[{
+        "model": "surveillance.ue",
+        "pk": 1,
+        "fields": {
+            "code": "ICT107",
+            "intitule": "Algèbre",
+            "duration": 3,
+            "level": 1
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 2,
+        "fields": {
+            "code": "ICT109",
+            "intitule": "Analyse",
+            "duration": 3,
+            "level": 1
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 3,
+        "fields": {
+            "code": "ICT105",
+            "intitule": "Algorithmique",
+            "duration": 3,
+            "level": 1
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 4,
+        "fields": {
+            "code": "MATH1042",
+            "intitule": "Algèbre Linéaire",
+            "duration": 3,
+            "level": 3
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 5,
+        "fields": {
+            "code": "MATH1023",
+            "intitule": "Analyse Equation",
+            "duration": 3,
+            "level": 3
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 6,
+        "fields": {
+            "code": "INFO1025",
+            "intitule": "Algorithmique et programmation",
+            "duration": 3,
+            "level": 3
+        }
+    }
+]

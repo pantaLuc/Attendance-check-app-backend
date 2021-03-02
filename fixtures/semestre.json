@@ -1,0 +1,17 @@
+[{
+        "model": "surveillance.semestre",
+        "pk": 1,
+        "fields": {
+            "num_semestre": 1,
+            "year": 2021
+        }
+    },
+    {
+        "model": "surveillance.semestre",
+        "pk": 2,
+        "fields": {
+            "num_semestre": 2,
+            "year": 2021
+        }
+    }
+]

@@ -1,0 +1,16 @@
+[{
+        "model": "surveillance.filiere",
+        "pk": 1,
+        "fields": {
+            "name": "informatique"
+        }
+    },
+    {
+        "model": "surveillance.filiere",
+        "pk": 2,
+        "fields": {
+            "name": "mathematique"
+        }
+    }
+
+]
