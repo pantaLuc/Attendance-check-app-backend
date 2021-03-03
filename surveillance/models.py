@@ -70,8 +70,8 @@ class Exam(models.Model):
 
 
 class Controler(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    surveillant = models.ForeignKey(Surveillant, on_delete=models.CASCADE)
-    examen = models.ForeignKey(Exam, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_control")
+    surveillant = models.ForeignKey(Surveillant, on_delete=models.CASCADE, related_name="surv_control")
+    examen = models.ForeignKey(Exam, on_delete=models.CASCADE, related_name="exam_control")
     is_present = models.BooleanField(default = False)
-    salle = models.ForeignKey(Salle, on_delete=models.CASCADE)
+    salle = models.ForeignKey(Salle, on_delete=models.CASCADE, related_name="salle_control")

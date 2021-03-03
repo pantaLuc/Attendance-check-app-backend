@@ -51,5 +51,14 @@
             "last_name": "cynthia",
             "genre": "feminin"
         }
+    },
+    {
+        "model": "surveillance.surveillant",
+        "pk": 7,
+        "fields": {
+            "first_name": "Hocele",
+            "last_name": "horcy",
+            "genre": "feminin"
+        }
     }
 ]
