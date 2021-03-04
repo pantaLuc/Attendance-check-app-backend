@@ -1,1 +1,1 @@
-web:gunicorn decanatsurveillance.wsgi --log-file -
+web: gunicorn decanatsurveillance.wsgi --log-file -
