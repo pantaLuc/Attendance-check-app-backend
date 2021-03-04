@@ -19,6 +19,7 @@ class User(AbstractUser):
     phone = models.CharField(max_length=15)
     password = models.CharField(max_length=255)
     role = models.ForeignKey(Role, on_delete=models.SET_NULL, null=True)
+    matricule = models.CharField(max_length=7, default="0000000")
     username = None
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

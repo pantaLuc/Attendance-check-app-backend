@@ -17,6 +17,9 @@ class Surveillant(models.Model):
                                 choices=GENRE_CHOICES,
                                 default='masculin'
                             )
+    phone = models.CharField(max_length=9, default="000000000")
+    matricule = models.CharField(max_length=7, default="0000000")
+    grade = models.BooleanField(default=False)
 
 
 class Salle(models.Model):

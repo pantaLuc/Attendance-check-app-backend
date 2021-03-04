@@ -2,7 +2,7 @@
         "model": "surveillance.exam",
         "pk": 1,
         "fields": {
-            "day": "2021-06-21",
+            "day": "2021-03-04",
             "plage": 1,
             "ue": 1,
             "name": "SN",
@@ -13,7 +13,7 @@
         "model": "surveillance.exam",
         "pk": 2,
         "fields": {
-            "day": "2021-05-21",
+            "day": "2021-03-05",
             "plage": 3,
             "ue": 5,
             "name": "CC",
@@ -24,7 +24,7 @@
         "model": "surveillance.exam",
         "pk": 3,
         "fields": {
-            "day": "2021-02-23",
+            "day": "2021-03-04",
             "plage": 4,
             "ue": 3,
             "name": "Rattapage",
@@ -35,7 +35,7 @@
         "model": "surveillance.exam",
         "pk": 4,
         "fields": {
-            "day": "2021-08-25",
+            "day": "2021-03-04",
             "plage": 3,
             "ue": 2,
             "name": "SN",

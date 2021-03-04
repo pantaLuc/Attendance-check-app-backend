@@ -7,6 +7,7 @@
             "email": "delano@gmail.com",
             "phone": "695350147",
             "password": "delano12345",
+            "matricule": "18P2015",
             "role": 2
         }
     },
@@ -19,6 +20,7 @@
             "email": "loic@gmail.com",
             "phone": "695750142",
             "password": "loic12345",
+            "matricule": "20P2025",
             "role": 2
         }
     },
@@ -30,6 +32,7 @@
             "last_name": "diepe",
             "email": "christian@gmail.com",
             "phone": "695456197",
+            "matricule": "20K9632",
             "password": "christian12345",
             "role": 2
         }
@@ -42,6 +45,7 @@
             "last_name": "sandes",
             "email": "ivan@gmail.com",
             "phone": "695350147",
+            "matricule": "12J2515",
             "password": "ivan12345",
             "role": 2
         }

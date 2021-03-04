@@ -14,6 +14,9 @@ class SurveillantSerializer(serializers.ModelSerializer):
             "first_name",
             "last_name",
             "genre",
+            "grade",
+            "phone",
+            "matricule",
             "exam"
         ]
     def get_exam(self, obj):

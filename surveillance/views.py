@@ -8,12 +8,12 @@ from rest_framework.generics import GenericAPIView
 from rest_framework import exceptions, status, generics, mixins, viewsets
 from rest_framework.permissions import IsAuthenticated
 from users.authentication import JwtAuthenticatedUser
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from django.core.exceptions import ObjectDoesNotExist
 
-
-
 @api_view(['GET'])
+@authentication_classes([JwtAuthenticatedUser])
+@permission_classes([IsAuthenticated])
 def mark_supervisor(request, id_present):
     try:
         supervisor = Controler.objects.get(pk=id_present)
@@ -32,16 +32,19 @@ def mark_supervisor(request, id_present):
         return Response({"message":"Impossible de marquer la presence"})
 
 @api_view(['GET'])
+@authentication_classes([JwtAuthenticatedUser])
+@permission_classes([IsAuthenticated])
 def check_supervisor(request, id_surv):
     try:
         supervisor = Surveillant.objects.get(pk=id_surv)
         
         if supervisor is not None:
             current_time = datetime.datetime.now().time()
-
+            current_date = datetime.datetime.now().date()
             try:
                     
                 present = Controler.objects.get(
+                                    Q(examen__day=current_date) &
                                     Q(examen__plage__begin__lt=current_time) &
                                     Q(examen__plage__end__gt=current_time) &
                                     Q(surveillant=supervisor))
@@ -81,8 +84,8 @@ def check_supervisor(request, id_surv):
   
 
 class SurveillantViewSet(viewsets.ViewSet):
-    # authentication_classes = [JwtAuthenticatedUser]
-    # permission_classes = [IsAuthenticated]
+    authentication_classes = [JwtAuthenticatedUser]
+    permission_classes = [IsAuthenticated]
 
     def list(self, request):
         serializer = SurveillantSerializer(Surveillant.objects.all(), many=True)
@@ -123,8 +126,8 @@ class SurveillantViewSet(viewsets.ViewSet):
 
 
 class SalleViewSet(viewsets.ViewSet):
-    # authentication_classes = [JwtAuthenticatedUser]
-    # permission_classes = [IsAuthenticated]
+    authentication_classes = [JwtAuthenticatedUser]
+    permission_classes = [IsAuthenticated]
 
     def list(self, request):
         serializer = SalleSerializer(Salle.objects.all(), many=True)
@@ -165,8 +168,8 @@ class SalleViewSet(viewsets.ViewSet):
 
 
 class FiliereViewSet(viewsets.ViewSet):
-    # authentication_classes = [JwtAuthenticatedUser]
-    # permission_classes = [IsAuthenticated]
+    authentication_classes = [JwtAuthenticatedUser]
+    permission_classes = [IsAuthenticated]
 
     def list(self, request):
         serializer = FiliereSerializer(Filiere.objects.all(), many=True)
@@ -207,8 +210,8 @@ class FiliereViewSet(viewsets.ViewSet):
 
 
 class NiveauViewSet(viewsets.ViewSet):
-    # authentication_classes = [JwtAuthenticatedUser]
-    # permission_classes = [IsAuthenticated]
+    authentication_classes = [JwtAuthenticatedUser]
+    permission_classes = [IsAuthenticated]
 
     def list(self, request):
         serializer = NiveauSerializer(Niveau.objects.all(), many=True)
@@ -249,8 +252,8 @@ class NiveauViewSet(viewsets.ViewSet):
 
 
 class UeViewSet(viewsets.ViewSet):
-    # authentication_classes = [JwtAuthenticatedUser]
-    # permission_classes = [IsAuthenticated]
+    authentication_classes = [JwtAuthenticatedUser]
+    permission_classes = [IsAuthenticated]
 
     def list(self, request):
         serializer = UeSerializer(Ue.objects.all(), many=True)
@@ -290,8 +293,8 @@ class UeViewSet(viewsets.ViewSet):
 
 
 class PlageViewSet(viewsets.ViewSet):
-    # authentication_classes = [JwtAuthenticatedUser]
-    # permission_classes = [IsAuthenticated]
+    authentication_classes = [JwtAuthenticatedUser]
+    permission_classes = [IsAuthenticated]
 
     def list(self, request):
         serializer = PlageSerializer(Plage.objects.all(), many=True)
@@ -332,8 +335,8 @@ class PlageViewSet(viewsets.ViewSet):
 
 
 class SemestreViewSet(viewsets.ViewSet):
-    # authentication_classes = [JwtAuthenticatedUser]
-    # permission_classes = [IsAuthenticated]
+    authentication_classes = [JwtAuthenticatedUser]
+    permission_classes = [IsAuthenticated]
 
     def list(self, request):
         serializer = SemestreSerializer(Semestre.objects.all(), many=True)
@@ -373,8 +376,8 @@ class SemestreViewSet(viewsets.ViewSet):
 
 
 class ExamViewSet(viewsets.ViewSet):
-    # authentication_classes = [JwtAuthenticatedUser]
-    # permission_classes = [IsAuthenticated]
+    authentication_classes = [JwtAuthenticatedUser]
+    permission_classes = [IsAuthenticated]
 
     def list(self, request):
         serializer = ExamSerializer(Exam.objects.all(), many=True)
@@ -415,8 +418,8 @@ class ExamViewSet(viewsets.ViewSet):
 
 
 class ControlerViewSet(viewsets.ViewSet):
-    # authentication_classes = [JwtAuthenticatedUser]
-    # permission_classes = [IsAuthenticated]
+    authentication_classes = [JwtAuthenticatedUser]
+    permission_classes = [IsAuthenticated]
 
     def list(self, request):
         serializer = ControlerSerializer(Controler.objects.all(), many=True)
