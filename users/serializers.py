@@ -51,6 +51,7 @@ class UsersSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = [
+            'id',
             'first_name',
             'last_name',
             'email',
@@ -64,7 +65,7 @@ class UsersSerializer(serializers.ModelSerializer):
             "password": {"write_only": True}
         }
     # Methode pour
-    def get_exam(self, obj):
+    def get_surv(self, obj):
         presents = obj.user_control.all()
         current_date = datetime.datetime.now().date()
         
