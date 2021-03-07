@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'corsheaders'
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
+
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -146,3 +146,6 @@ STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'users.User'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+
