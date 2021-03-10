@@ -20,6 +20,12 @@ def mark_supervisor(request, id_present):
         supervisor.is_present = True
         supervisor.save()
         
+        all_presence = Controler.objects.filter(examen=supervisor.examen, salle=supervisor.salle)
+        
+        for present in all_presence:
+            present.user = request.user
+            present.save()
+        
         return Response({
                         'id_exam': supervisor.id,
                         'surv' : {

@@ -73,7 +73,7 @@ class Exam(models.Model):
 
 
 class Controler(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_control")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_control", default=0)
     surveillant = models.ForeignKey(Surveillant, on_delete=models.CASCADE, related_name="surv_control")
     examen = models.ForeignKey(Exam, on_delete=models.CASCADE, related_name="exam_control")
     is_present = models.BooleanField(default = False)

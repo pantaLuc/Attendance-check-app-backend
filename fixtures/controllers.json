@@ -1,4 +1,19 @@
-[{
+[
+
+    {
+        "model": "users.user",
+        "pk": 0,
+        "fields": {
+            "first_name": "default",
+            "last_name": "default",
+            "email": "default@gmail.com",
+            "phone": "000000000",
+            "password": "pbkdf2_sha256$216000$XRzRTUxrk6FS$Jz2HsMfuYA6V9U9EVbXDPlrmU8ucBcHNNoRkFmu0ZRk=",
+            "matricule": "0000000",
+            "role": 2
+        }
+    },
+    {
         "model": "users.user",
         "pk": 1,
         "fields": {

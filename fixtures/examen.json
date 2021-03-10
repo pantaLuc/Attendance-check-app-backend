@@ -2,7 +2,7 @@
         "model": "surveillance.exam",
         "pk": 1,
         "fields": {
-            "day": "2021-03-04",
+            "day": "2021-03-05",
             "plage": 1,
             "ue": 1,
             "name": "SN",
@@ -24,7 +24,7 @@
         "model": "surveillance.exam",
         "pk": 3,
         "fields": {
-            "day": "2021-03-04",
+            "day": "2021-03-05",
             "plage": 4,
             "ue": 3,
             "name": "Rattapage",
@@ -35,7 +35,7 @@
         "model": "surveillance.exam",
         "pk": 4,
         "fields": {
-            "day": "2021-03-04",
+            "day": "2021-03-05",
             "plage": 3,
             "ue": 2,
             "name": "SN",
