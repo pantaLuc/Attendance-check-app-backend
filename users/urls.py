@@ -14,6 +14,9 @@ urlpatterns = [
         'get': 'list',
         'post': 'create'
     })),
+    path('users/info', ProfileUseAPIView.as_view()),
+    path('users/password', ProfilePasswordAPIView.as_view())
+
     path('roles', RoleViewSet.as_view({
         'get': 'list',
         'post': 'create',
@@ -23,7 +26,5 @@ urlpatterns = [
         'put': 'update',
         'delete': 'delete'
     })),
-    path('users/info', ProfileUseAPIView.as_view()),
-    path('users/password', ProfilePasswordAPIView.as_view())
-
+   
 ]
