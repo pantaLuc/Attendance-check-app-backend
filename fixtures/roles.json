@@ -1,34 +1,33 @@
-[
-   {
-       "model":"users.role",
-       "pk":1,
-       "fields":{
-           "name":"Admin",
-           "permissions":[
-               1,2,3,4
-           ]
-       }
-   },
+[{
+        "model": "users.role",
+        "pk": 1,
+        "fields": {
+            "name": "Admin",
+            "permissions": [
+                1, 2, 3, 4
+            ]
+        }
+    },
 
-   {
-    "model":"users.role",
-    "pk":2,
-    "fields":{
-        "name":"Controleur",
-        "permissions":[
-            1
-        ]
-    }
-},
+    {
+        "model": "users.role",
+        "pk": 2,
+        "fields": {
+            "name": "Controleur",
+            "permissions": [
+                4
+            ]
+        }
+    },
 
-{
-    "model":"users.role",
-    "pk":3,
-    "fields":{
-        "name":"Decanat",
-        "permissions":[
-            1
-        ]
+    {
+        "model": "users.role",
+        "pk": 3,
+        "fields": {
+            "name": "Decanat",
+            "permissions": [
+                1
+            ]
+        }
     }
-}
 ]
