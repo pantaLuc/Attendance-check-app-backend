@@ -101,6 +101,7 @@ class UeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ue 
         fields = [
+                    'id',
                     'code',
                     'intitule',
                     'duration',
@@ -137,6 +138,7 @@ class PlageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Plage
         fields = [
+                    'id',
                     'begin',
                     'end'
                  ]
@@ -154,6 +156,7 @@ class SemestreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Semestre
         fields = [
+                    'id',
                     'num_semestre',
                     'year'
                  ]
@@ -176,6 +179,7 @@ class ExamSerializer(serializers.ModelSerializer):
     class Meta:
         model = Exam
         fields = [
+                    'id',
                     'day',
                     'plage',
                     'ue',

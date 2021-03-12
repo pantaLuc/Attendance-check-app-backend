@@ -1,6 +1,6 @@
 from django.urls import path
 #from .views import Surveillant 
-from .views import SurveillantViewSet, SalleViewSet, mark_supervisor, FiliereViewSet, NiveauViewSet, UeViewSet, check_supervisor, PlageViewSet, SemestreViewSet, ExamViewSet, ControlerViewSet
+from .views import SurveillantViewSet, SalleViewSet, mark_supervisor, FiliereViewSet, NiveauViewSet, UeViewSet, check_supervisor, PlageViewSet, SemestreViewSet, ExamViewSet, ControlerViewSet, ExportAPIView
 
 urlpatterns = [
     path("checksupervisor/<int:id_surv>/", check_supervisor),
@@ -86,4 +86,5 @@ urlpatterns = [
         'put': 'update',
         'delete': 'destroy'
     })),
+    path('export', ExportAPIView.as_view())
 ]

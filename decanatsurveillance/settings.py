@@ -26,10 +26,10 @@ SECRET_KEY = 'jt49$5yqgcr*qjmgzmz5bwc)-9(zc=mju2^p_0vnyz&j9rb^@='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.105']
 
 
-# Application definition
+# Application definition 
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'corsheaders'
 ]
 
-CORS_ORIGIN_ALLOW_ALL=True
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -137,3 +136,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'users.User'
+
+CORS_ORIGIN_ALLOW_ALL= True
+CORS_ALLOW_CREDENTIALS =True
+SESSION_COOKIE_SAMESITE = 'None'

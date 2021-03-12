@@ -1,12 +1,25 @@
 [{
         "model": "users.user",
+        "pk": 0,
+        "fields": {
+            "first_name": "admin",
+            "last_name": "default",
+            "email": "admin@gmail.com",
+            "phone": "000000000",
+            "password": "pbkdf2_sha256$216000$nFGlXTaqYV3b$VTpZP4oPnhqYS9AO1mXpbT+PLt5fXEOZ4HL5/Y1vheY=",
+            "matricule": "0000000",
+            "role": 2
+        }
+    },
+    {
+        "model": "users.user",
         "pk": 1,
         "fields": {
             "first_name": "delano",
             "last_name": "roosvelt",
             "email": "delano@gmail.com",
             "phone": "695350147",
-            "password": "delano12345",
+            "password": "pbkdf2_sha256$216000$nFGlXTaqYV3b$VTpZP4oPnhqYS9AO1mXpbT+PLt5fXEOZ4HL5/Y1vheY=",
             "matricule": "18P2015",
             "role": 2
         }
@@ -19,7 +32,7 @@
             "last_name": "joang",
             "email": "loic@gmail.com",
             "phone": "695750142",
-            "password": "loic12345",
+            "password": "pbkdf2_sha256$216000$dEdBLNFFWGdY$OInyy2xqNNzzfdG58m0eFnc2W0jNH4f4TRd7eGETQ6c=",
             "matricule": "20P2025",
             "role": 2
         }
@@ -33,7 +46,7 @@
             "email": "christian@gmail.com",
             "phone": "695456197",
             "matricule": "20K9632",
-            "password": "christian12345",
+            "password": "pbkdf2_sha256$216000$us3bwXAlBds7$6Fzx3h47InqpgBb/m+NoD3Yf7b0VCqjI9MM07othp6Q=",
             "role": 2
         }
     },
@@ -46,7 +59,7 @@
             "email": "ivan@gmail.com",
             "phone": "695350147",
             "matricule": "12J2515",
-            "password": "ivan12345",
+            "password": "pbkdf2_sha256$216000$jgzPbgt7XfXI$MS0t2fNOMlklLTR3ajueyMdCuBHI3e3eu2EYZfYp7lY=",
             "role": 2
         }
     }

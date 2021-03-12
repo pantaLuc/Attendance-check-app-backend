@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from rest_framework import exceptions, viewsets, status
+from rest_framework import exceptions, viewsets, status,generics, mixins
+from .models import User, Permission, Role
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view
@@ -62,7 +63,7 @@ def signout(reques):
     response = Response()
     response.delete_cookie(key='jwt')
     response.data = {
-        "detail": "sucess"
+        "detail": "success"
     }
     return response
 
@@ -136,31 +137,90 @@ class RoleViewSet(viewsets.ViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class ProfileUseAPIView(APIView):
-    authentication_classes = [JwtAuthenticatedUser]
-    permission_classes = [IsAuthenticated]
+# class UserGenericAPIVIEW(generics.GenericAPIView,
+#                          mixins.ListModelMixin, mixins.RetrieveModelMixin,
+#                          mixins.CreateModelMixin, mixins.UpdateModelMixin,
+#                          mixins.DestroyModelMixin):
+#     # authentication_classes = [JwtAuthenticatedUser]
+#     # permission_classes = [IsAuthenticated]  
+#     queryset = User.objects.all()
+#     serializer_class = UsersSerializer
 
-    def put(self, request, pk=None):
-        user = request.user
-        serializer = UsersSerializer(user, data=request.data, partial=True)
+#     def get(self, request, pk=None):
+#         if pk:
+#             return Response({'data': self.retrieve(request, pk).data})
+#         return Response({
+#             'data': self.list(request).data
+#         })
+
+#     def post(self, request):
+#         return Response({
+#             "data": self.create(request).data
+#         })
+
+#     def put(self, request, pk=None):
+#         return Response({
+#             "data": self.partial_update(request, pk).data
+#         })
+
+#     def delete(self, request, pk=None):
+#         return self.destroy(request, pk)
+
+
+#     def update(self, request, pk=None):
+#         user = Users.objects.get(id=pk)
+#         serializer = UsersSerializer(instance=user, data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#         return Response({
+#             "data": serializer.data
+#         }, status=status.HTTP_202_ACCEPTED)
+
+#     def delete(self, request, pk=None):
+#         user = Users.objects.get(id=pk)
+#         user.delete()
+#         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+
+
+
+class UserViewSet(viewsets.ViewSet):
+    # authentication_classes = [JwtAuthenticatedUser]
+    # permission_classes = [IsAuthenticated]
+
+    def list(self, request):
+        serializer = UsersSerializer(User.objects.all(), many=True)
+        return Response({
+            "data": serializer.data
+        })
+
+    def retrieve(self, request, pk=None):
+        user = User.objects.get(id=pk)
+        serializer = UsersSerializer(user)
+        return Response({
+            "data": serializer.data
+        })
+
+    def create(self, request):
+        serializer = UsersSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response({
             "data": serializer.data
         })
 
-
-class ProfilePasswordAPIView(APIView):
-    authentication_classes = [JwtAuthenticatedUser]
-    permission_classes = [IsAuthenticated]
-
-    def put(self, request, pk=None):
-        user = request.user
-        if request.data['password'] != request.data['password_confirm']:
-            raise exceptions.ValidationError("password do not match")
-        serializer = UsersSerializer(user, data=request.data, partial=True)
+    def update(self, request, pk=None):
+        user = User.objects.get(id=pk)
+        serializer = UsersSerializer(instance=user, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response({
-            "data": serializer.data
-        })
+            "deta": serializer.data
+        }, status=status.HTTP_202_ACCEPTED)
+
+    def delete(self, request, pk=None):
+        user = User.objects.get(id=pk)
+        user.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
