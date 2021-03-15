@@ -46,5 +46,26 @@
             "libelle": "salle 5",
             "localisation": "bloc pedagogique"
         }
+    },
+    {
+        "model": "surveillance.salle",
+        "pk": 6,
+
+        "fields": {
+            "code": "1001",
+            "libelle": "salle 6",
+            "localisation": ""
+        }
+    },
+    {
+        "model": "surveillance.salle",
+        "pk": 7,
+
+        "fields": {
+            "code": "1003",
+            "libelle": "salle 7",
+            "localisation": ""
+        }
     }
+    
 ]

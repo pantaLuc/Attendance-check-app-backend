@@ -12,15 +12,21 @@ class Surveillant(models.Model):
 
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
-    #phone = models.CharField(max_length=10)
     genre = models.CharField(max_length=10,
                                 choices=GENRE_CHOICES,
                                 default='masculin'
                             )
+    phone = models.CharField(max_length=9, default="000000000")
+    matricule = models.CharField(max_length=7, default="0000000")
+    grade = models.BooleanField(default=False)
+
+    @property
+    def name(self):
+        return self.first_name + ' ' + self.last_name
 
 
 class Salle(models.Model):
-    code = models.CharField(max_length=10)
+    code = models.CharField(max_length=10, unique = True)
     libelle = models.CharField(max_length=255)
     localisation = models.CharField(max_length=255)
 
@@ -70,8 +76,8 @@ class Exam(models.Model):
 
 
 class Controler(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    surveillant = models.ForeignKey(Surveillant, on_delete=models.CASCADE)
-    examen = models.ForeignKey(Exam, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_control", default=0)
+    surveillant = models.ForeignKey(Surveillant, on_delete=models.CASCADE, related_name="surv_control")
+    examen = models.ForeignKey(Exam, on_delete=models.CASCADE, related_name="exam_control")
     is_present = models.BooleanField(default = False)
-    salle = models.ForeignKey(Salle, on_delete=models.CASCADE)
+    salle = models.ForeignKey(Salle, on_delete=models.CASCADE, related_name="salle_control")

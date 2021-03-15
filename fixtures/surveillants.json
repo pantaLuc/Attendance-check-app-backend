@@ -4,7 +4,9 @@
         "fields": {
             "first_name": "delano",
             "last_name": "roosvelt",
-            "genre": "masculin"
+            "genre": "masculin",
+            "phone": "632521458",
+            "matricule": "21U2025"
         }
     },
     {
@@ -13,7 +15,9 @@
         "fields": {
             "first_name": "denio",
             "last_name": "aime",
-            "genre": "feminin"
+            "genre": "feminin",
+            "phone": "635214258",
+            "matricule": "52I5202"
         }
     },
     {
@@ -22,7 +26,9 @@
         "fields": {
             "first_name": "luc",
             "last_name": "panta",
-            "genre": "masculin"
+            "genre": "masculin",
+            "phone": "632002581",
+            "matricule": "15V2023"
         }
     },
     {
@@ -31,7 +37,9 @@
         "fields": {
             "first_name": "abdel",
             "last_name": "mfoussa",
-            "genre": "masculin"
+            "genre": "masculin",
+            "phone": "632100894",
+            "matricule": "23M2031"
         }
     },
     {
@@ -40,7 +48,9 @@
         "fields": {
             "first_name": "koati",
             "last_name": "romeo",
-            "genre": "masclin"
+            "genre": "masclin",
+            "phone": "632154789",
+            "matricule": "12N2031"
         }
     },
     {
@@ -49,7 +59,163 @@
         "fields": {
             "first_name": "cyndi",
             "last_name": "cynthia",
-            "genre": "feminin"
+            "genre": "feminin",
+            "phone": "639201547",
+            "matricule": "14P2032"
+        }
+    },
+    {
+        "model": "surveillance.surveillant",
+        "pk": 7,
+        "fields": {
+            "first_name": "Hocele",
+            "last_name": "horcy",
+            "genre": "feminin",
+            "phone": "632255984",
+            "matricule": "21E5214"
+        }
+    },
+    {
+        "model": "surveillance.surveillant",
+        "pk": 8,
+        "fields": {
+            "first_name": "kenfack",
+            "last_name": "laurene",
+            "genre": "feminin",
+            "phone": "632255564",
+            "matricule": "30D5214"
+        }
+    },
+    {
+        "model": "surveillance.surveillant",
+        "pk": 9,
+        "fields": {
+            "first_name": "Djoukam",
+            "last_name": "patricia",
+            "genre": "feminin",
+            "phone": "632256784",
+            "matricule": "19M5214"
+        }
+    },
+    {
+        "model": "surveillance.surveillant",
+        "pk": 10,
+        "fields": {
+            "first_name": "Tuekam",
+            "last_name": "livine",
+            "genre": "feminin",
+            "phone": "686255984",
+            "matricule": "17E5214"
+        }
+    },
+    {
+        "model": "surveillance.surveillant",
+        "pk": 11,
+        "fields": {
+            "first_name": "Tchantchou",
+            "last_name": "dylane",
+            "genre": "masculin",
+            "phone": "632255987",
+            "matricule": "21N5214"
+        }
+    },
+    {
+        "model": "surveillance.surveillant",
+        "pk": 12,
+        "fields": {
+            "first_name": "Tchomo",
+            "last_name": "junior",
+            "genre": "masculin",
+            "phone": "656255984",
+            "matricule": "17E5214"
+        }
+    },
+    {
+        "model": "surveillance.surveillant",
+        "pk": 13,
+        "fields": {
+            "first_name": "Kago",
+            "last_name": "benita",
+            "genre": "feminin",
+            "phone": "632255094",
+            "matricule": "16E5214"
+        }
+    },
+    {
+        "model": "surveillance.surveillant",
+        "pk": 14,
+        "fields": {
+            "first_name": "Pouadjeu",
+            "last_name": "ida",
+            "genre": "feminin",
+            "phone": "698255984",
+            "matricule": "20E5214"
+        }
+    },
+    {
+        "model": "surveillance.surveillant",
+        "pk": 15,
+        "fields": {
+            "first_name": "Jogo",
+            "last_name": "ivan",
+            "genre": "masculin",
+            "phone": "632985984",
+            "matricule": "28O5214"
+        }
+    },
+    {
+        "model": "surveillance.surveillant",
+        "pk": 16,
+        "fields": {
+            "first_name": "Tchemateu",
+            "last_name": "Francis",
+            "genre": "masculin",
+            "phone": "602255984",
+            "matricule": "12E5214"
+        }
+    },
+    {
+        "model": "surveillance.surveillant",
+        "pk": 17,
+        "fields": {
+            "first_name": "Zapfack",
+            "last_name": "Loic",
+            "genre": "masculin",
+            "phone": "686255984",
+            "matricule": "22E5214"
+        }
+    },
+    {
+        "model": "surveillance.surveillant",
+        "pk": 18,
+        "fields": {
+            "first_name": "Lassi",
+            "last_name": "onel",
+            "genre": "masculin",
+            "phone": "636555984",
+            "matricule": "29E5214"
+        }
+    },
+    {
+        "model": "surveillance.surveillant",
+        "pk": 19,
+        "fields": {
+            "first_name": "Nono",
+            "last_name": "princesse",
+            "genre": "feminin",
+            "phone": "689055984",
+            "matricule": "11E5214"
+        }
+    },
+    {
+        "model": "surveillance.surveillant",
+        "pk": 20,
+        "fields": {
+            "first_name": "Ngoufus",
+            "last_name": "noa",
+            "genre": "masculin",
+            "phone": "689255984",
+            "matricule": "21E5217"
         }
     }
 ]

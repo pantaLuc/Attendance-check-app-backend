@@ -3,12 +3,64 @@ from .models import Surveillant, Salle, Filiere, Niveau, Ue, Plage, Semestre, Ex
 from users.models import User
 from users.serializers import UsersSerializer
 from rest_framework.serializers import SerializerMethodField
+import datetime
 
 class SurveillantSerializer(serializers.ModelSerializer):
+    exam = SerializerMethodField()
     class Meta:
         model = Surveillant
-        fields = "__all__"
+        # fields = "__all__"
+        fields = [
+            "id",
+            "first_name",
+            "last_name",
+            "genre",
+            "grade",
+            "phone",
+            "matricule",
+            "exam"
+        ]
+    def get_exam(self, obj):
+        presents = obj.surv_control.all()
+        current_date = datetime.datetime.now().date()
+        
+        result = {
+                    "present":[],
+                    "absent":[]
+                }
 
+        for present in presents :
+            if current_date <= present.examen.day:
+                item = {
+                    'niveau' : {
+                                'id' : present.examen.ue.level.id,
+                                'niveau' : present.examen.ue.level.level,
+                                'filiere': present.examen.ue.level.filiere.name,
+                            },
+                    'salle' : {
+                                'id' : present.salle.id,
+                                'code': present.salle.code,
+                                'localisation': present.salle.localisation
+                            },
+                    'Ue' : {
+                            "id": present.examen.id,
+                            "code": present.examen.ue.code,
+                            "intitule": present.examen.ue.intitule,
+                        },
+                    'Horaire' : {
+                        'id' : present.examen.plage.id,
+                        "date": present.examen.day,
+                        'begin' : present.examen.plage.begin,
+                        'end' : present.examen.plage.end
+                    }
+                }
+                
+                
+                if present.is_present:
+                    result["present"].append(item)
+                else:
+                    result["absent"].append(item)
+        return result
 
 class SalleSerializer(serializers.ModelSerializer):
     class Meta:
@@ -54,6 +106,7 @@ class UeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ue 
         fields = [
+                    'id',
                     'code',
                     'intitule',
                     'duration',
@@ -90,6 +143,7 @@ class PlageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Plage
         fields = [
+                    'id',
                     'begin',
                     'end'
                  ]
@@ -107,6 +161,7 @@ class SemestreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Semestre
         fields = [
+                    'id',
                     'num_semestre',
                     'year'
                  ]
@@ -129,6 +184,7 @@ class ExamSerializer(serializers.ModelSerializer):
     class Meta:
         model = Exam
         fields = [
+                    'id',
                     'day',
                     'plage',
                     'ue',

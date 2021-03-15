@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import (signup, users, signin, AuthenticateUSer,
-                    signout, PermissionViewSet, RoleViewSet,
-                    ProfileUseAPIView, ProfilePasswordAPIView)
+                    signout, PermissionViewSet, RoleViewSet, UserViewSet
+                    )
 
 
 urlpatterns = [
@@ -25,6 +25,21 @@ urlpatterns = [
         'get': 'retrieve',
         'put': 'update',
         'delete': 'delete'
+<<<<<<< HEAD
     }))
    
+=======
+    })),
+    # path('users', UserGenericAPIVIEW.as_view()),
+    # path('users/<str:pk>', UserGenericAPIVIEW.as_view())
+    path('users', UserViewSet.as_view({
+        'get': 'list',
+        'post': 'create'
+    })),
+    path('users/<str:pk>', UserViewSet.as_view({
+        'get': 'retrieve',
+        'put': 'update',
+        'delete': 'delete'
+    }))
+>>>>>>> b122a98b6b9052fabf4916e8c5a37a120e09193c
 ]

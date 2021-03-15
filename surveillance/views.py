@@ -8,17 +8,26 @@ from rest_framework.generics import GenericAPIView
 from rest_framework import exceptions, status, generics, mixins, viewsets
 from rest_framework.permissions import IsAuthenticated
 from users.authentication import JwtAuthenticatedUser
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from django.core.exceptions import ObjectDoesNotExist
-
-
+from rest_framework.views import APIView
+from django.http import HttpResponse
+import csv
 
 @api_view(['GET'])
+@authentication_classes([JwtAuthenticatedUser])
+@permission_classes([IsAuthenticated])
 def mark_supervisor(request, id_present):
     try:
         supervisor = Controler.objects.get(pk=id_present)
         supervisor.is_present = True
         supervisor.save()
+        
+        all_presence = Controler.objects.filter(examen=supervisor.examen, salle=supervisor.salle)
+        
+        for present in all_presence:
+            present.user = request.user
+            present.save()
         
         return Response({
                         'id_exam': supervisor.id,
@@ -32,16 +41,19 @@ def mark_supervisor(request, id_present):
         return Response({"message":"Impossible de marquer la presence"})
 
 @api_view(['GET'])
+@authentication_classes([JwtAuthenticatedUser])
+@permission_classes([IsAuthenticated])
 def check_supervisor(request, id_surv):
     try:
         supervisor = Surveillant.objects.get(pk=id_surv)
         
         if supervisor is not None:
             current_time = datetime.datetime.now().time()
-
+            current_date = datetime.datetime.now().date()
             try:
                     
                 present = Controler.objects.get(
+                                    Q(examen__day=current_date) &
                                     Q(examen__plage__begin__lt=current_time) &
                                     Q(examen__plage__end__gt=current_time) &
                                     Q(surveillant=supervisor))
@@ -452,3 +464,26 @@ class ControlerViewSet(viewsets.ViewSet):
         controler.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class ExportAPIView(APIView):
+    # authentication_classes = [JwtAuthenticatedUser]
+    # permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        response = HttpResponse(content_type = 'text/csv')
+        response['Content-Disposition'] = 'attachment; filename = orders.csv'
+
+        surveillants = Surveillant.objects.all()
+        writer = csv.writer(response)
+
+        writer.writerow(['ID', 'Name', 'Matricule', 'Phone', 'Genre', 'Grade'])
+
+        for surveillant in surveillants:
+            writer.writerow([surveillant.id, surveillant.name, surveillant.matricule, surveillant.phone, surveillant.genre, surveillant.grade])
+            #surveillantItems = Controler.objects.all().filter(surveillant_id = surveillant.id)
+
+            # for item in surveillantItems:
+            #     writer.writerow(['item.id', 'item.name', 'item.matricule', 'item.phone', 'item.genre', 'item.grade'])
+
+        return response

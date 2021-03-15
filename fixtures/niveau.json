@@ -11,7 +11,7 @@
         "model": "surveillance.niveau",
         "pk": 2,
         "fields": {
-            "level": "3",
+            "level": "2",
             "nbr_student": 100,
             "filiere": 1
         }
@@ -20,6 +20,33 @@
         "model": "surveillance.niveau",
         "pk": 3,
         "fields": {
+            "level": "3",
+            "nbr_student": 80,
+            "filiere": 1
+        }
+    },
+    {
+        "model": "surveillance.niveau",
+        "pk": 4,
+        "fields": {
+            "level": "4",
+            "nbr_student": 70,
+            "filiere": 1
+        }
+    },
+    {
+        "model": "surveillance.niveau",
+        "pk": 5,
+        "fields": {
+            "level": "5",
+            "nbr_student": 60,
+            "filiere": 1
+        }
+    },
+    {
+        "model": "surveillance.niveau",
+        "pk": 6,
+        "fields": {
             "level": "1",
             "nbr_student": 700,
             "filiere": 2
@@ -27,11 +54,129 @@
     },
     {
         "model": "surveillance.niveau",
-        "pk": 4,
+        "pk": 7,
         "fields": {
             "level": "2",
-            "nbr_student": 300,
+            "nbr_student": 400,
             "filiere": 2
         }
+    },
+    {
+        "model": "surveillance.niveau",
+        "pk": 8,
+        "fields": {
+            "level": "3",
+            "nbr_student": 350,
+            "filiere": 2
+        }
+    },
+    {
+        "model": "surveillance.niveau",
+        "pk": 9,
+        "fields": {
+            "level": "4",
+            "nbr_student": 340,
+            "filiere": 2
+        }
+    },
+    {
+        "model": "surveillance.niveau",
+        "pk": 10,
+        "fields": {
+            "level": "5",
+            "nbr_student": 330,
+            "filiere": 2
+        }
+    },
+    {
+        "model": "surveillance.niveau",
+        "pk": 11,
+        "fields": {
+            "level": "1",
+            "nbr_student": 4000,
+            "filiere": 3
+        }
+    },
+    {
+        "model": "surveillance.niveau",
+        "pk": 12,
+        "fields": {
+            "level": "2",
+            "nbr_student": 3500,
+            "filiere": 3
+        }
+    },
+    {
+        "model": "surveillance.niveau",
+        "pk": 13,
+        "fields": {
+            "level": "3",
+            "nbr_student": 3430,
+            "filiere": 3
+        }
+    },
+    {
+        "model": "surveillance.niveau",
+        "pk": 14,
+        "fields": {
+            "level": "4",
+            "nbr_student": 3000,
+            "filiere": 3
+        }
+    },
+    {
+        "model": "surveillance.niveau",
+        "pk": 15,
+        "fields": {
+            "level": "5",
+            "nbr_student": 2700,
+            "filiere": 3
+        }
+    },
+    {
+        "model": "surveillance.niveau",
+        "pk": 16,
+        "fields": {
+            "level": "1",
+            "nbr_student": 7000,
+            "filiere": 4
+        }
+    },
+    {
+        "model": "surveillance.niveau",
+        "pk": 17,
+        "fields": {
+            "level": "2",
+            "nbr_student": 5000,
+            "filiere": 4
+        }
+    },
+    {
+        "model": "surveillance.niveau",
+        "pk": 18,
+        "fields": {
+            "level": "3",
+            "nbr_student": 4000,
+            "filiere": 4
+        }
+    },
+    {
+        "model": "surveillance.niveau",
+        "pk": 19,
+        "fields": {
+            "level": "4",
+            "nbr_student": 3000,
+            "filiere": 4
+        }
+    },
+    {
+        "model": "surveillance.niveau",
+        "pk": 20,
+        "fields": {
+            "level": "5",
+            "nbr_student": 2700,
+            "filiere": 4
+        }
     }
+  
 ]

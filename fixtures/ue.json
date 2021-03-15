@@ -2,7 +2,7 @@
         "model": "surveillance.ue",
         "pk": 1,
         "fields": {
-            "code": "ICT107",
+            "code": "INFO1045",
             "intitule": "Algèbre",
             "duration": 3,
             "level": 1
@@ -12,7 +12,7 @@
         "model": "surveillance.ue",
         "pk": 2,
         "fields": {
-            "code": "ICT109",
+            "code": "INFO1009",
             "intitule": "Analyse",
             "duration": 3,
             "level": 1
@@ -22,7 +22,7 @@
         "model": "surveillance.ue",
         "pk": 3,
         "fields": {
-            "code": "ICT105",
+            "code": "INFO190",
             "intitule": "Algorithmique",
             "duration": 3,
             "level": 1
@@ -32,30 +32,457 @@
         "model": "surveillance.ue",
         "pk": 4,
         "fields": {
-            "code": "MATH1042",
-            "intitule": "Algèbre Linéaire",
+            "code": "MATH1004",
+            "intitule": "Alegbre lineaire",
             "duration": 3,
-            "level": 3
+            "level": 1
         }
     },
     {
         "model": "surveillance.ue",
         "pk": 5,
         "fields": {
-            "code": "MATH1023",
-            "intitule": "Analyse Equation",
+            "code": "MATH1050",
+            "intitule": "Crytographie1",
             "duration": 3,
-            "level": 3
+            "level": 1
         }
     },
     {
         "model": "surveillance.ue",
         "pk": 6,
         "fields": {
-            "code": "INFO1025",
-            "intitule": "Algorithmique et programmation",
+            "code": "MATH1054",
+            "intitule": "Programmation C",
+            "duration": 3,
+            "level": 1
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 7,
+        "fields": {
+            "code": "BIOS1034",
+            "intitule": "Etude des rganismes vivants",
+            "duration": 3,
+            "level": 1
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 8,
+        "fields": {
+            "code": "BIOS1032",
+            "intitule": "Metabolisme des Vertebres",
+            "duration": 3,
+            "level": 1
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 9,
+        "fields": {
+            "code": "BIOS1087",
+            "intitule": "Mecanisme de reproduction",
+            "duration": 3,
+            "level": 1
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 10,
+        "fields": {
+            "code": "LB1030",
+            "intitule": "Methodes d'analyes des textes",
+            "duration": 3,
+            "level": 1
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 11,
+        "fields": {
+            "code": "LB1040",
+            "intitule": "Anglais",
+            "duration": 3,
+            "level": 1
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 12,
+        "fields": {
+            "code": "LB1088",
+            "intitule": "Langue",
+            "duration": 3,
+            "level": 1
+        }
+    },
+    
+
+    {
+        "model": "surveillance.ue",
+        "pk": 13,
+        "fields": {
+            "code": "INFO20154",
+            "intitule": "Algorithmique",
+            "duration": 3,
+            "level": 2
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 14,
+        "fields": {
+            "code": "INFO2021",
+            "intitule": "Programmation C",
+            "duration": 2,
+            "level": 2
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 15,
+        "fields": {
+            "code": "INFO2045",
+            "intitule": "Securite des systeme d'informations",
+            "duration": 2,
+            "level": 2
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 16,
+        "fields": {
+            "code": "MATH2093",
+            "intitule": "Anglais",
+            "duration": 3,
+            "level": 2
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 17,
+        "fields": {
+            "code": "MATH2096",
+            "intitule": "Algerbre",
+            "duration": 3,
+            "level": 2
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 18,
+        "fields": {
+            "code": "MATH2089",
+            "intitule": "Cryptographie2",
+            "duration": 3,
+            "level": 2
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 19,
+        "fields": {
+            "code": "BIOS2033",
+            "intitule": "Le Metabolisme Humain",
+            "duration": 3,
+            "level": 2
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 20,
+        "fields": {
+            "code": "BIOS20567",
+            "intitule": "Anglais",
+            "duration": 3,
+            "level": 2
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 21,
+        "fields": {
+            "code": "BIOS2098",
+            "intitule": "Francais",
+            "duration": 3,
+            "level": 2
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 22,
+        "fields": {
+            "code": "LB2098",
+            "intitule": "Techniques d'expressions",
+            "duration": 3,
+            "level": 2
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 23,
+        "fields": {
+            "code": "LB2038",
+            "intitule": "Analyse des molecules",
+            "duration": 3,
+            "level": 2
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 24,
+        "fields": {
+            "code": "LB2043",
+            "intitule": "Technique de reportages",
+            "duration": 4,
+            "level": 2
+        }
+    },
+
+
+    {
+        "model": "surveillance.ue",
+        "pk": 24,
+        "fields": {
+            "code": "INFO30154",
+            "intitule": "Algorithmique 3",
             "duration": 3,
             "level": 3
         }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 25,
+        "fields": {
+            "code": "INFO3021",
+            "intitule": "Programmation C",
+            "duration": 2,
+            "level": 3
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 26,
+        "fields": {
+            "code": "INFO3045",
+            "intitule": "Securite des systeme d'informations 3",
+            "duration": 2,
+            "level": 3
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 27,
+        "fields": {
+            "code": "MATH3093",
+            "intitule": "Anglais 3",
+            "duration": 3,
+            "level": 3
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 28,
+        "fields": {
+            "code": "MATH3096",
+            "intitule": "Algerbre 3",
+            "duration": 4,
+            "level": 3
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 29,
+        "fields": {
+            "code": "MATH3089",
+            "intitule": "Cryptographie 3",
+            "duration": 4,
+            "level": 3
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 30,
+        "fields": {
+            "code": "BIOS3033",
+            "intitule": "Le Metabolisme Humain 3",
+            "duration": 3,
+            "level": 3
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 31,
+        "fields": {
+            "code": "BIOS30567",
+            "intitule": "Anglais 3",
+            "duration": 3,
+            "level": 3
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 32,
+        "fields": {
+            "code": "BIOS3098",
+            "intitule": "Francais 3",
+            "duration": 3,
+            "level": 3
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 33,
+        "fields": {
+            "code": "LB3098",
+            "intitule": "Techniques d'expressions 3",
+            "duration": 3,
+            "level": 3
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 34,
+        "fields": {
+            "code": "LB3038",
+            "intitule": "Analyse des molecules 3",
+            "duration": 3,
+            "level": 3
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 35,
+        "fields": {
+            "code": "LB3043",
+            "intitule": "Technique de reportages 3",
+            "duration": 4,
+            "level": 3
+        }
+    },
+
+
+    {
+        "model": "surveillance.ue",
+        "pk": 36,
+        "fields": {
+            "code": "INFO40154",
+            "intitule": "Algorithmique 4",
+            "duration": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 37,
+        "fields": {
+            "code": "INFO4021",
+            "intitule": "Programmation python",
+            "duration": 2,
+            "level": 4
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 38,
+        "fields": {
+            "code": "INFO4045",
+            "intitule": "Securite des systeme d'informations 4",
+            "duration": 2,
+            "level": 4
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 39,
+        "fields": {
+            "code": "MATH4093",
+            "intitule": "Anglais 4",
+            "duration": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 40,
+        "fields": {
+            "code": "MATH4096",
+            "intitule": "Algerbre 4",
+            "duration": 4,
+            "level": 4
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 41,
+        "fields": {
+            "code": "MATH4089",
+            "intitule": "Cryptographie 4",
+            "duration": 4,
+            "level": 3
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 42,
+        "fields": {
+            "code": "BIOS4033",
+            "intitule": "Le Metabolisme Humain 4",
+            "duration": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 43,
+        "fields": {
+            "code": "BIOS40567",
+            "intitule": "Anglais 5",
+            "duration": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 44,
+        "fields": {
+            "code": "BIOS4098",
+            "intitule": "Francais 4",
+            "duration": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 45,
+        "fields": {
+            "code": "LB4098",
+            "intitule": "Techniques d'expressions 4",
+            "duration": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 46,
+        "fields": {
+            "code": "LB4038",
+            "intitule": "Analyse des molecules 4",
+            "duration": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "surveillance.ue",
+        "pk": 47,
+        "fields": {
+            "code": "LB4043",
+            "intitule": "Technique de reportages 4",
+            "duration": 4,
+            "level": 4
+        }
     }
+    
 ]

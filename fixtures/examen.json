@@ -2,7 +2,7 @@
         "model": "surveillance.exam",
         "pk": 1,
         "fields": {
-            "day": "2021-06-21",
+            "day": "2021-03-12",
             "plage": 1,
             "ue": 1,
             "name": "SN",
@@ -13,9 +13,9 @@
         "model": "surveillance.exam",
         "pk": 2,
         "fields": {
-            "day": "2021-05-21",
+            "day": "2021-03-12",
             "plage": 3,
-            "ue": 5,
+            "ue": 2,
             "name": "CC",
             "semestre": 2
         }
@@ -24,10 +24,10 @@
         "model": "surveillance.exam",
         "pk": 3,
         "fields": {
-            "day": "2021-02-23",
+            "day": "2021-03-12",
             "plage": 4,
             "ue": 3,
-            "name": "Rattapage",
+            "name": "Rattrapage",
             "semestre": 2
         }
     },
@@ -35,11 +35,310 @@
         "model": "surveillance.exam",
         "pk": 4,
         "fields": {
-            "day": "2021-08-25",
+            "day": "2021-03-12",
             "plage": 3,
+            "ue": 4,
+            "name": "SN",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 5,
+        "fields": {
+            "day": "2021-03-12",
+            "plage": 2,
+            "ue": 5,
+            "name": "SN",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 6,
+        "fields": {
+            "day": "2021-03-13",
+            "plage": 1,
+            "ue": 6,
+            "name": "SN",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 6,
+        "fields": {
+            "day": "2021-03-13",
+            "plage": 2,
+            "ue": 6,
+            "name": "SN",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 7,
+        "fields": {
+            "day": "2021-03-13",
+            "plage": 3,
+            "ue": 7,
+            "name": "SN",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 8,
+        "fields": {
+            "day": "2021-03-13",
+            "plage": 3,
+            "ue": 8,
+            "name": "SN",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 9,
+        "fields": {
+            "day": "2021-03-14",
+            "plage": 1,
             "ue": 2,
+            "name": "rattrapage",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 10,
+        "fields": {
+            "day": "2021-03-14",
+            "plage": 1,
+            "ue": 3,
+            "name": "rattrapage",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 11,
+        "fields": {
+            "day": "2021-03-15",
+            "plage": 3,
+            "ue": 8,
+            "name": "SN",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 12,
+        "fields": {
+            "day": "2021-03-15",
+            "plage": 5,
+            "ue": 9,
+            "name": "SN",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 13,
+        "fields": {
+            "day": "2021-03-16",
+            "plage": 1,
+            "ue": 10,
+            "name": "SN",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 14,
+        "fields": {
+            "day": "2021-03-16",
+            "plage": 2,
+            "ue": 11,
+            "name": "SN",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 15,
+        "fields": {
+            "day": "2021-03-16",
+            "plage": 3,
+            "ue": 13,
+            "name": "SN",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 16,
+        "fields": {
+            "day": "2021-03-16",
+            "plage": 4,
+            "ue": 14,
+            "name": "SN",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 17,
+        "fields": {
+            "day": "2021-03-16",
+            "plage": 5,
+            "ue": 15,
+            "name": "SN",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 18,
+        "fields": {
+            "day": "2021-03-17",
+            "plage": 1,
+            "ue": 7,
+            "name": "rattrapage",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 19,
+        "fields": {
+            "day": "2021-03-17",
+            "plage": 2,
+            "ue": 8,
+            "name": "rattrapage",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 20,
+        "fields": {
+            "day": "2021-03-17",
+            "plage": 3,
+            "ue": 9,
+            "name": "SN",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 21,
+        "fields": {
+            "day": "2021-03-17",
+            "plage": 4,
+            "ue": 10,
+            "name": "rattrapage",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 22,
+        "fields": {
+            "day": "2021-03-17",
+            "plage": 5,
+            "ue": 11,
+            "name": "rattrapage",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 23,
+        "fields": {
+            "day": "2021-03-18",
+            "plage": 1,
+            "ue": 16,
+            "name": "SN",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 24,
+        "fields": {
+            "day": "2021-03-18",
+            "plage": 2,
+            "ue": 17,
+            "name": "SN",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 25,
+        "fields": {
+            "day": "2021-03-18",
+            "plage": 3,
+            "ue": 18,
+            "name": "SN",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 26,
+        "fields": {
+            "day": "2021-03-18",
+            "plage": 4,
+            "ue": 20,
+            "name": "SN",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 27,
+        "fields": {
+            "day": "2021-03-18",
+            "plage": 5,
+            "ue": 21,
+            "name": "SN",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 28,
+        "fields": {
+            "day": "2021-03-19",
+            "plage": 1,
+            "ue": 22,
+            "name": "SN",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 29,
+        "fields": {
+            "day": "2021-03-19",
+            "plage": 2,
+            "ue": 12,
+            "name": "rattrepage",
+            "semestre": 1
+        }
+    },
+    {
+        "model": "surveillance.exam",
+        "pk": 30,
+        "fields": {
+            "day": "2021-03-19",
+            "plage": 3,
+            "ue": 23,
             "name": "SN",
             "semestre": 1
         }
     }
+
+
 ]
