@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import exceptions, viewsets, status,generics, mixins
+from rest_framework import exceptions, viewsets, status, generics, mixins
 from .models import User, Permission, Role
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
@@ -142,18 +142,10 @@ class RoleViewSet(viewsets.ViewSet):
 #                          mixins.CreateModelMixin, mixins.UpdateModelMixin,
 #                          mixins.DestroyModelMixin):
 #     # authentication_classes = [JwtAuthenticatedUser]
-#     # permission_classes = [IsAuthenticated]  
+#     # permission_classes = [IsAuthenticated]
 #     queryset = User.objects.all()
 #     serializer_class = UsersSerializer
 
-<<<<<<< HEAD
-    def put(self, request, pk=None):
-        user = request.user
-        serializer = UsersSerializer(user, data=request.data, partial=True)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data)
-=======
 #     def get(self, request, pk=None):
 #         if pk:
 #             return Response({'data': self.retrieve(request, pk).data})
@@ -190,10 +182,6 @@ class RoleViewSet(viewsets.ViewSet):
 #         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-
-
-
-
 class UserViewSet(viewsets.ViewSet):
     # authentication_classes = [JwtAuthenticatedUser]
     # permission_classes = [IsAuthenticated]
@@ -203,7 +191,6 @@ class UserViewSet(viewsets.ViewSet):
         return Response({
             "data": serializer.data
         })
->>>>>>> b122a98b6b9052fabf4916e8c5a37a120e09193c
 
     def retrieve(self, request, pk=None):
         user = User.objects.get(id=pk)
