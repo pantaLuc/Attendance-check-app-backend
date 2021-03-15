@@ -1,3 +1,9 @@
-decanatsurveillance/__pycache__/
-users/__pycache__/
+decanatsurveillance/pycache/
+
+users/pycache/
+users/migrations/pycache/
+
+surveillance/pycache/
+surveillance/migrations/pycache/
+
 db.sqlite3
